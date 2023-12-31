@@ -1,13 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from Arrays import word_list
+from Arrays import word_list, bing_url
 import time
 import pyautogui
 
-edge_dir = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
+# edge_dir = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
 
-bing_url = "https://www.bing.com/search?q=ss&form=QBLH&sp=-1&ghc=1&lq=0&pq=ss&sc=11-2&qs=n&sk=&cvid=133DE369E02F41CCA18BB28FBF10660F&ghsh=0&ghacc=0&ghpl="
+driver = None
 
 #TODO Da completare integrando pyautogui
 def click_accedi(x, y):
@@ -16,10 +16,10 @@ def click_accedi(x, y):
     actual_y = int(window_size['height'] * (y / 100))
     print(window_size)
 
-
-def start_routine():
+def start_routine(word_list, bing_url):
+    global driver
     try:
-        # We create WebDriver
+        # Create a WebDriver
         driver = webdriver.Edge()
         # Navigate to URL
         driver.get(bing_url)
@@ -28,15 +28,22 @@ def start_routine():
         options.add_experimental_option("detach", True)
         for word in word_list:
             elem = driver.find_element(By.ID, 'sb_form_q')
-            elem.clear()
-            elem.send_keys(word)
-            elem.send_keys(Keys.RETURN)
-            time.sleep(4)
+
+        # Open a new window
+        driver.execute_script(f"window.open('{bing_url}', '_blank');")
+        driver.switch_to.window(driver.window_handles[1])
+        driver.get(bing_url)
+        elem.clear()
+        elem.send_keys(word)
+        elem.send_keys(Keys.RETURN)
+        time.sleep(4)
     except Exception as e:
         print(f"An error occurred: {e}")
 
-start_routine()
+start_routine(word_list, bing_url)
 
 
 
-# driver.close()
+
+
+
