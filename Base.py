@@ -1,17 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from Arrays import word_list
 import time
+import pyautogui
+
+edge_dir = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
 
 bing_url = "https://www.bing.com/search?q=ss&form=QBLH&sp=-1&ghc=1&lq=0&pq=ss&sc=11-2&qs=n&sk=&cvid=133DE369E02F41CCA18BB28FBF10660F&ghsh=0&ghacc=0&ghpl="
 
-options = webdriver.EdgeOptions()
-options.add_experimental_option("detach", True)
-
-driver = webdriver.Edge(options=options)
-driver.get(bing_url)
-
-
+#TODO Da completare integrando pyautogui
 def click_accedi(x, y):
     window_size = driver.get_window_size()
     actual_x = int(window_size['width'] * (x / 100))
@@ -19,17 +17,26 @@ def click_accedi(x, y):
     print(window_size)
 
 
-word_list = ["videogiochi", "programming", "machine", "learning", "python", "example", "random", "words", "selenium", "browser", "automation", "testing", "web", "driver", "element", "key", "by", "ID", "options", "detach", "execute", "submit", "form", "search", "Bing", "Google", "Yahoo", "website", "link", "click", "navigate", "navigate", "back", "forward", "refresh", "close", "open", "session"]
+def start_routine():
+    try:
+        # We create WebDriver
+        driver = webdriver.Edge()
+        # Navigate to URL
+        driver.get(bing_url)
+        options = webdriver.EdgeOptions()
+        # Let the tab up
+        options.add_experimental_option("detach", True)
+        for word in word_list:
+            elem = driver.find_element(By.ID, 'sb_form_q')
+            elem.clear()
+            elem.send_keys(word)
+            elem.send_keys(Keys.RETURN)
+            time.sleep(4)
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-for word in word_list:
-    # closeCookie = driver.find_element(By.ID, 'bnp_btn_reject')
-    # if closeCookie.is_displayed():
-    #     closeCookie.send_keys(Keys.RETURN)
-    # else :
-        elem = driver.find_element(By.ID, 'sb_form_q')
-        elem.clear()
-        elem.send_keys(word)
-        elem.send_keys(Keys.RETURN)
-        time.sleep(2)
+start_routine()
+
+
 
 # driver.close()
