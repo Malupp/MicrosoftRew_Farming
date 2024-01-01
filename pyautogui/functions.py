@@ -1,3 +1,5 @@
+import pyautogui
+
 #TODO Da completare integrando pyautogui
 def click_accedi(x, y):
     window_size = driver.get_window_size()
