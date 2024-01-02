@@ -6,3 +6,4 @@ def click_accedi(x, y):
     actual_x = int(window_size['width'] * (x / 100))
     actual_y = int(window_size['height'] * (y / 100))
     print(window_size)
+
