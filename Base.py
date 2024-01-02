@@ -3,21 +3,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from dotenv import load_dotenv
-import os
 import dati
 import time
 
 load_dotenv()
 
-# edge_dir = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
-edge_dir2 = r'C:\Users\Manuel Luppino\OneDrive - Bit srl\Desktop\msedge.exe'
-
-password_login = os.getenv("PASSWORD_LOGIN")
-email_login =os.getenv("EMAIL_LOGIN")
-
 my_options = webdriver.EdgeOptions()
 my_options.add_experimental_option('detach', True)
-my_options.add_argument(f"user-data-dir={edge_dir2}")
+my_options.add_argument(f"user-data-dir={dati.directory}")
 driver = webdriver.Edge(options = my_options)
 
 def open_browser():
@@ -43,13 +36,13 @@ def first_checks():
 
         time.sleep(3)
         inputEmail = driver.find_element(By.ID, 'i0116')
-        inputEmail.send_keys(email_login)
+        inputEmail.send_keys(dati.email_login)
         avantiButton = driver.find_element(By.ID, "idSIButton9")
         avantiButton.click()
 
         time.sleep(3)
         inputPassword = driver.find_element(By.ID, "i0118")
-        inputPassword.send_keys(password_login)
+        inputPassword.send_keys(dati.password_login)
         siButton = driver.find_element(By.ID, "idSIButton9")
         siButton.click()
 
