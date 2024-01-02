@@ -1,1 +1,1 @@
-## A little Project to automate farming on Microsoft Rewards
+## A little Project using Selenium and Python to automate farming on Microsoft Rewards
