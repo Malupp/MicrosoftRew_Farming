@@ -7,14 +7,17 @@ from selenium.webdriver.support import expected_conditions as EC
 import data
 import time
 
+
 my_options = webdriver.EdgeOptions()
+# Let the browser open after the flow has been finished
 my_options.add_experimental_option('detach', True)
-my_options.add_argument(f"user-data-dir={data.edge_dir2}")
+# It will open an instance of your browser where you are already enrolled
+my_options.add_argument(f"user-data-dir={data.edge_dir}")
+# It will open an istance of the browser
 driver = webdriver.Edge(options = my_options)
 
 # It will open the browser with a default URL I chose
 def open_browser():
-    
     driver.get(data.bing_url)
     return driver
 
@@ -62,7 +65,7 @@ def first_checks():
         siButton = driver.find_element(By.ID, "idSIButton9")
         siButton.click()
 
-# This function will search 50 random words to farm points
+# This function will search x random words in order to farm points
 def start_routine():
     try:
         for x in range(2):

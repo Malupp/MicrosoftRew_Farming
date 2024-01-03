@@ -9,7 +9,10 @@ def getRandomWord():
 password_login = os.getenv("PASSWORD_LOGIN")
 email_login = os.getenv("EMAIL_LOGIN")
 
-#This is the path of your browser in your desktop
-edge_dir2 = r'C:\Users\Manuel Luppino\OneDrive - Bit srl\Desktop\msedge.exe'
+# This is the path of your browser in your desktop
+# You will find the path in properties > general > path
+# I recommend you to put your shortcut in a folder because selenium can create folders related to Edge Browser
+# dir_example = r'C:\Users\User\Documents\Folder Name'
+edge_dir = r'C:\Users\Utente 1\Documents\Microsoft rewards browser'
 
 bing_url = "https://www.bing.com/search?q=s&form=QBLH&sp=-1&ghc=1&lq=0&pq=s&sc=11-2&qs=n&sk=&cvid=133DE369E02F41CCA18BB28FBF10660F&ghsh=0&ghacc=0&ghpl="
