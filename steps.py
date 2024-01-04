@@ -73,6 +73,10 @@ def start_routine():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def open_tasks():
+    button_tasks = driver.find_element(By.ID, 'id_rh').click()
+    return button_tasks
+
 first_checks()
 start_routine()
 
