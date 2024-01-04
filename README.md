@@ -1,4 +1,4 @@
-## Microsoft Rewards Automation Project
+### Microsoft Rewards Automation Project
 # Overview
 This project is designed to automate Microsoft Rewards searches using the Bing search engine. It utilizes the Selenium web automation library to perform searches on Bing and earn Microsoft Rewards points automatically.
 
