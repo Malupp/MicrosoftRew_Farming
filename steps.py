@@ -2,10 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import data
 import time
-
-
 
 my_options = webdriver.EdgeOptions()
 my_options.add_experimental_option('detach', True)
@@ -14,6 +14,7 @@ driver = webdriver.Edge(options = my_options)
 
 # It will open the browser with a default URL I chose
 def open_browser():
+    
     driver.get(data.bing_url)
     return driver
 
@@ -64,7 +65,7 @@ def first_checks():
 # This function will search 50 random words to farm points
 def start_routine():
     try:
-        for x in range(50):
+        for x in range(2):
             elem = driver.find_element(By.ID, 'sb_form_q')
             elem.clear()
             elem.send_keys(data.getRandomWord())
@@ -74,11 +75,15 @@ def start_routine():
         print(f"An error occurred: {e}")
 
 def open_tasks():
-    button_tasks = driver.find_element(By.ID, 'id_rh').click()
-    return button_tasks
+    button_tasks = driver.find_element(By.ID, 'id_rh')
+    button_tasks.click()
+    # app_element = WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.ID, 'app')))
+    # driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight;", app_element)
+
 
 first_checks()
 start_routine()
+open_tasks()
 
 
 
