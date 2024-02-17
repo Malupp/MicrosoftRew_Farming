@@ -74,14 +74,38 @@ def first_checks():
 
 def start_routine():
     try:
-        for x in range(40):
+        for x in range(35):
             elem = driver.find_element(By.ID, 'sb_form_q')
             elem.clear()
             elem.send_keys(dati.getRandomWord())
             elem.send_keys(Keys.RETURN)
             time.sleep(6)
+
+            current_points = get_points()
+            if current_points is not None and current_points < 90:
+                print(f"Not enough points ({current_points}), continuing search.")
+            else:
+                print(f"Reached 90 points ({current_points}), stopping search.")
+                break
     except Exception as e:
         print(f"An error occurred: {e}")
+
+def get_points():
+    try:
+        btnMissions = driver.find_element(By.ID, 'rh_meter')
+        btnMissions.click()
+        time.sleep(3)
+        points_element = driver.find_element(By.CLASS_NAME, 'b_subtitle.promo-title')
+        points_text = points_element.text.strip()
+        points = int(points_text.split()[0])
+        return points
+    except NoSuchElementException:
+        print("Points element not found")
+        return None
+    except ValueError:
+        print("Unable to convert points to an integer")
+        return None
+
 
 first_checks()
 start_routine()
