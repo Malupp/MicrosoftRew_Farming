@@ -74,12 +74,12 @@ def first_checks():
 
 def start_routine():
     try:
-        for x in range(35):
+        for x in range(40):
             elem = driver.find_element(By.ID, 'sb_form_q')
             elem.clear()
             elem.send_keys(dati.getRandomWord())
             elem.send_keys(Keys.RETURN)
-            time.sleep(5)
+            time.sleep(6)
     except Exception as e:
         print(f"An error occurred: {e}")
 
