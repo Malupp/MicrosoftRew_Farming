@@ -9,16 +9,23 @@ import time
 
 load_dotenv()
 
+## Qui inserisci il path di dove si trova l'exe di Edge, consiglio: Creare un collegamento su una cartella desktop e incollare quel path qui
+
+### Es. Questo qui sotto non funzionerà
 # edge_dir = r'C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe'
-edge_dir2 = r'C:\Users\Utente 1\Documents\Microsoft rewards browser'
+
+### Questi qui sotto invece funzionano perché sono dei path-collegamenti su una cartella creata appositamente
+
+# edge_dir2 = r'C:\Users\Utente 1\Documents\Microsoft rewards browser'
 # edge_dir3 = r'C:\Users\Manuel Luppino\OneDrive - Bit srl\Desktop\msedge.exe'
+edge_dir4 = r'C:\Users\Admin\Desktop\Coding Project\msedge.exe'
 
 password_login = os.getenv("PASSWORD_LOGIN")
 email_login =os.getenv("EMAIL_LOGIN")
 
 my_options = webdriver.EdgeOptions()
 my_options.add_experimental_option('detach', True)
-my_options.add_argument(f"user-data-dir={edge_dir2}")
+my_options.add_argument(f"user-data-dir={edge_dir4}")
 driver = webdriver.Edge(options = my_options)
 
 def open_browser():
