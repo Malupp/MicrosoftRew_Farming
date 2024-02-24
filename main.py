@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from dotenv import load_dotenv
 import os
 import dati
@@ -36,41 +38,41 @@ def first_checks():
     open_browser()
     time.sleep(5)
 
-    try:
-        closeCookieButton = driver.find_element(By.ID, 'bnp_btn_reject')
-        if closeCookieButton.is_displayed():
-            closeCookieButton.click()
-    except NoSuchElementException:
-            print("Elemento 'bottone rifiuta' non trovato, continuo senza cliccarlo")
-    try:
-        accedi = driver.find_element(By.ID, 'id_a')
-        if accedi.is_displayed():
-            accedi.click()
-    except NoSuchElementException:
-        print("Elemento 'accedi' non trovato, continuo senza cliccarlo")
+    # try:
+    #     closeCookieButton = driver.find_element(By.ID, 'bnp_btn_reject')
+    #     if closeCookieButton.is_displayed():
+    #         closeCookieButton.click()
+    # except NoSuchElementException:
+    #         print("Elemento 'bottone rifiuta' non trovato, continuo senza cliccarlo")
+    # try:
+    #     accedi = driver.find_element(By.ID, 'id_a')
+    #     if accedi.is_displayed():
+    #         accedi.click()
+    # except NoSuchElementException:
+    #     print("Elemento 'accedi' non trovato, continuo senza cliccarlo")
 
-        time.sleep(3)
-        inputEmail = driver.find_element(By.ID, 'i0116')
-        inputEmail.send_keys(email_login)
-        avantiButton = driver.find_element(By.ID, "idSIButton9")
-        avantiButton.click()
+    #     time.sleep(3)
+    #     inputEmail = driver.find_element(By.ID, 'i0116')
+    #     inputEmail.send_keys(email_login)
+    #     avantiButton = driver.find_element(By.ID, "idSIButton9")
+    #     avantiButton.click()
 
-        time.sleep(3)
-        inputPassword = driver.find_element(By.ID, "i0118")
-        inputPassword.send_keys(password_login)
-        siButton = driver.find_element(By.ID, "idSIButton9")
-        siButton.click()
+    #     time.sleep(3)
+    #     inputPassword = driver.find_element(By.ID, "i0118")
+    #     inputPassword.send_keys(password_login)
+    #     siButton = driver.find_element(By.ID, "idSIButton9")
+    #     siButton.click()
 
-        time.sleep(3)
-        try:
-            nonVisualizzarePiuQuestoMessaggio = driver.find_element(By.ID, "KmsiCheckboxField")
-            if nonVisualizzarePiuQuestoMessaggio.is_displayed():
-                nonVisualizzarePiuQuestoMessaggio.click()
-        except NoSuchElementException:
-            print("Elemento 'KmsiCheckboxField' non trovato, continuo senza cliccarlo")
-        time.sleep(2)
-        siButton = driver.find_element(By.ID, "idSIButton9")
-        siButton.click()
+    #     time.sleep(3)
+    #     try:
+    #         nonVisualizzarePiuQuestoMessaggio = driver.find_element(By.ID, "KmsiCheckboxField")
+    #         if nonVisualizzarePiuQuestoMessaggio.is_displayed():
+    #             nonVisualizzarePiuQuestoMessaggio.click()
+    #     except NoSuchElementException:
+    #         print("Elemento 'KmsiCheckboxField' non trovato, continuo senza cliccarlo")
+    #     time.sleep(2)
+    #     siButton = driver.find_element(By.ID, "idSIButton9")
+    #     siButton.click()
 
 def start_routine():
     try:
@@ -81,12 +83,12 @@ def start_routine():
             elem.send_keys(Keys.RETURN)
             time.sleep(6)
 
-            current_points = get_points()
-            if current_points is not None and current_points < 90:
-                print(f"Not enough points ({current_points}), continuing search.")
-            else:
-                print(f"Reached 90 points ({current_points}), stopping search.")
-                break
+        current_points = get_points()
+        if current_points is not None and current_points < 90:
+            print(f"Not enough points ({current_points}), continuing search.")
+            start_routine()
+        else:
+            print(f"Reached 90 points ({current_points}), stopping search.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
@@ -105,6 +107,7 @@ def get_points():
     except ValueError:
         print("Unable to convert points to an integer")
         return None
+
 
 
 first_checks()
