@@ -31,5 +31,5 @@ The project utilizes the Selenium WebDriver for Microsoft Edge. If needed, downl
 
 The script is configured to use an existing Microsoft Edge user profile for the enrolled session. Make sure the specified user data directory exists and contains the necessary profile data.
 
-## What directory use
-In order to let the browser works, you should put in "edge_dir" the browser's linked path. You will see an example inside the main.py file 
+## What directory you should use
+In order to let the browser properly work, you should put in "edge_dir" the browser's linked path. You will see an example inside the main.py file 
