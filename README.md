@@ -5,9 +5,9 @@ This project is designed to automate Microsoft Rewards searches using the Bing s
 # Prerequisites
 Before running the project, ensure that you have the required Python modules installed. You can install them using the following commands:
 
-pip install selenium
-pip install Random-Word
-pip install python-dotenv
+- pip install selenium
+- pip install Random-Word
+- pip install python-dotenv
 
 # Setup
 * Create a .env File:
@@ -25,11 +25,11 @@ Replace your_email@example.com and your_password with your Microsoft account ema
 
 Execute the main script by running the following command in your terminal or command prompt:
 
-- python steps.py
+- python main.py
 
 The project utilizes the Selenium WebDriver for Microsoft Edge. If needed, download the appropriate version of the WebDriver from the official Microsoft Edge WebDriver download page (https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) and add the WebDriver executable to your system's PATH.
 
 The script is configured to use an existing Microsoft Edge user profile for the enrolled session. Make sure the specified user data directory exists and contains the necessary profile data.
 
-## Disclaimer
-This project is for educational purposes only. Automated interactions with websites should comply with the terms of service of the respective websites. The project author is not responsible for any misuse or violation of terms of service. Use at your own risk.
+## What directory use
+In order to let the browser works, you should put in "edge_dir" the browser's linked path. You will see an example inside the main.py file 
