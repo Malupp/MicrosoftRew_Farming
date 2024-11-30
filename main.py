@@ -108,7 +108,15 @@ def get_points():
         print("Unable to convert points to an integer")
         return None
 
+def CheckQuests():
+    try:
+        promo_elements = driver.find_elements(By.TAG_NAME, 'promo_cont')
 
+        for e in promo_elements:
+            print(e.text)
+    except ValueError:
+        print("Unable to convert points to an integer")
+        return None
 
 first_checks()
 start_routine()
