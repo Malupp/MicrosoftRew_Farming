@@ -18,3 +18,11 @@ Execute the main script by running the following command in your terminal or com
 In order to let the script properly work, you should hover on the searchbar and wait for the script to run. The script will delete research and will enter a random word and then will click enter to do another research. This is a loop for 30 random words, it will take approximately 5 minutes, you can't move the mouse.
 
 Yeah, it sure will be better if we use Selenium, but I already tried it and I get a restriction. With this script you can't be detected.
+
+If you can run in a .bat file too.
+
+You can open a note and write this:
+
+@echo off
+cd "your_path_here"
+python "pyautoguiScript.py"
