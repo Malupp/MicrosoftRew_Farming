@@ -23,4 +23,5 @@ while (word < 30):  # inizia il loop, appena arriva a 30 parole scritte si inter
     pyautogui.press('enter',1,5)  # preme invio, 1 per farlo cliccare (con 0 non clicca), 5 è il wait
     sleep(5)  # ulteriore wait per evitare che bing non calcoli i punti
     word += 1  # aumenta il counter di word di 1 e ricomincia il loop
+    print(f"Ricerca numero {word} finita")
 print("Finito il loop")
