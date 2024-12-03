@@ -19,7 +19,7 @@ In order to let the script properly work, you should hover on the searchbar and 
 
 Yeah, it sure will be better if we use Selenium, but I already tried it and I get a restriction. With this script you can't be detected.
 
-If you can run in a .bat file too.
+If you want, you can run in a .bat file too.
 
 You can open a note and write this:
 
