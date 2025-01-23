@@ -11,10 +11,10 @@ word = 0  # counter delle parole scritte
 print(f"Aspetto 5 secondi prima di partire così puoi hoverare sulla barra di ricerca")
 sleep(5)  # hai 5 secondi per hoverare prima del click
 while (word < 30):  # inizia il loop, appena arriva a 30 parole scritte si interrompe
-    randomWordEng = dati.getRandomWord()
-    timeout = random.randint(5, 10)
-    randomWord = parole.parole[random.randint(0, len(parole.parole) - 1)]
-    word_to_search = random.choice([randomWord, randomWordEng])
+    randomWordEng = dati.getRandomWord() # recupera una parola dalla libreria dalle parole randomiche in inglese
+    timeout = random.randint(5, 10) # timeout randomico da 5 a 10 secondi
+    randomWord = parole.parole[random.randint(0, len(parole.parole) - 1)] # recupera una parola a caso dall'array di parole in italiano
+    word_to_search = random.choice([randomWord, randomWordEng]) # sceglie randomicamente tra una parola italiana o inglese
     print(f"Parto con la ricerca numero {word}")
     pyautogui.click()  # clicca col mouse
     counter = len(str(word))  # fa un check sulla lunghezza della parola e la cancella
@@ -23,7 +23,7 @@ while (word < 30):  # inizia il loop, appena arriva a 30 parole scritte si inter
         counter -= 1  
     pyautogui.write(word_to_search)  # scrive una parola random da questa libreria
     print(f"Cerco la parola {word_to_search}")
-    pyautogui.press('enter',1,timeout)  # preme invio, 1 per farlo cliccare (con 0 non clicca), 5 è il wait
+    pyautogui.press('enter',1,timeout)  # preme invio, 1 per farlo cliccare (con 0 non clicca), timeout è il wait randomico
     sleep(timeout)  # ulteriore wait per evitare che bing non calcoli i punti
     word += 1  # aumenta il counter di word di 1 e ricomincia il loop
     print(f"Ricerca numero {word} finita")
